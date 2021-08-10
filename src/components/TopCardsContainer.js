@@ -4,7 +4,7 @@ import MovieCard from "./MovieCard"
 import ReviewerCard from "./ReviewerCard"
 
 
-function TopCardsContainer({data,isMovie}) {
+function TopCardsContainer({data,isMovie,sortData}) {
 
     const [dataStart,setDataStart] = useState(0)
     const carouselLength = 4
@@ -22,7 +22,7 @@ function TopCardsContainer({data,isMovie}) {
     }
 
     function topData() {
-        return data.sort((a,b) => b.average_rating-a.average_rating).slice(0,topDataLength)
+        return data.sort(sortData).slice(0,topDataLength)
         
     }
     return (
