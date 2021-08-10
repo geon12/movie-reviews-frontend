@@ -1,6 +1,13 @@
 import './App.css';
 import {useState,useEffect} from "react"
 import Home from './components/Home';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import Movie from './components/Movie';
+
 
 function App() {
 
@@ -19,7 +26,19 @@ function App() {
 
   return (
     <div>
-      {movies && reviewers ? <Home movies={movies} reviewers={reviewers}/> : <div>Page is Loading</div>}
+      <Router>
+        <Switch>
+          <Route exact path='/'>
+            {movies && reviewers ? <Home movies={movies} reviewers={reviewers}/> : <div>Page is Loading</div>}
+          </Route>
+          <Route path='/movies/:id'>
+              <Movie />
+          </Route>
+          <Route path="*">
+              404 Page Not Found
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }

@@ -1,13 +1,30 @@
-function Movie({movie}) {
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
 
+function Movie() {
+    let { id } = useParams();
+    const [movie,setMovie] = useState(null)
+    useEffect( () => {
+        fetch(`${process.env.REACT_APP_API_URL}/movies/${id}`)
+            .then(resp => resp.json())
+            .then(setMovie)
+    },[id])
+
+    function populateMovieReviews () {
+        
+    }
     return (
         <div>
-            <h1>title: {movie.name}</h1>
-            <h2>description:</h2>
-            <p>{movie.description}</p>
-            <h3>released: {movie.year}</h3>
-            <h3>director: {movie.director}</h3>
-            <h3>duration(mins): {movie.duration}</h3>
+           { movie ? <>
+                        <h1>title: {movie.name}</h1>
+                        <h2>description:</h2>
+                        <p>{movie.description}</p>
+                        <h3>released: {movie.year}</h3>
+                        <h3>director: {movie.director}</h3>
+                        <h3>duration(mins): {movie.duration}</h3>
+                    </>
+                    : <div>Page is Loading</div>
+           }
         </div>
     )
 }
