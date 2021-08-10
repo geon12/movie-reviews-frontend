@@ -9,7 +9,9 @@ function Home({movies,reviewers}) {
     return (
         <div>
             <h1>Movie Reviews</h1>
+            <h2>Top Movies</h2>
             <TopCardsContainer data={movies} isMovie={true} sortData={sortMovies}/>
+            <h2>Top Reviewers</h2>
             <TopCardsContainer data={reviewers} isMovie={false} sortData={sortReviewers}/>
         </div>
         
