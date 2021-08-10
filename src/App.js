@@ -32,7 +32,7 @@ function App() {
             {movies && reviewers ? <Home movies={movies} reviewers={reviewers}/> : <div>Page is Loading</div>}
           </Route>
           <Route path='/movies/:id'>
-              <Movie />
+            {movies && reviewers ? <Movie movies={movies} reviewers={reviewers}/> : <div>Page is Loading</div>}
           </Route>
           <Route path="*">
               404 Page Not Found

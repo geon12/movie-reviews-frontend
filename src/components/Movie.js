@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import MovieReviewCard from "./MovieReviewCard";
 
-function Movie() {
+function Movie({movies,reviewers}) {
     let { id } = useParams();
     const [movie,setMovie] = useState(null)
     useEffect( () => {
@@ -11,7 +12,7 @@ function Movie() {
     },[id])
 
     function populateMovieReviews () {
-        
+        return movie.movie_reviews.map((review) => <MovieReviewCard movieReview={review} movies={movies} reviewers={reviewers}/>)
     }
     return (
         <div>
@@ -22,6 +23,10 @@ function Movie() {
                         <h3>released: {movie.year}</h3>
                         <h3>director: {movie.director}</h3>
                         <h3>duration(mins): {movie.duration}</h3>
+                        <h2>Reviews</h2>
+                        <div>
+                            {populateMovieReviews()}
+                        </div>
                     </>
                     : <div>Page is Loading</div>
            }
