@@ -19,7 +19,7 @@ function App() {
 
   return (
     <div>
-      {movies ? <Home movie={movies[0]}/> : <div>Page is Loading</div>}
+      {movies && reviewers ? <Home movies={movies} reviewers={reviewers}/> : <div>Page is Loading</div>}
     </div>
   );
 }
