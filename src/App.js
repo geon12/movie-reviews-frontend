@@ -7,6 +7,7 @@ import {
   Route
 } from "react-router-dom";
 import Movie from './components/Movie';
+import Reviewer from './components/Reviewer'
 
 
 function App() {
@@ -33,6 +34,9 @@ function App() {
           </Route>
           <Route path='/movies/:id'>
             {movies && reviewers ? <Movie movies={movies} reviewers={reviewers}/> : <div>Page is Loading</div>}
+          </Route>
+          <Route path='/reviewers/:id'>
+            {movies && reviewers ? <Reviewer movies={movies} reviewers={reviewers}/> : <div>Page is Loading</div>}
           </Route>
           <Route path="*">
               404 Page Not Found

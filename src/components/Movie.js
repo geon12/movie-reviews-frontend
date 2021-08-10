@@ -12,7 +12,7 @@ function Movie({movies,reviewers}) {
     },[id])
 
     function populateMovieReviews () {
-        return movie.movie_reviews.map((review) => <MovieReviewCard movieReview={review} movies={movies} reviewers={reviewers}/>)
+        return movie.movie_reviews.map((review) => <MovieReviewCard movieReview={review} movies={movies} reviewers={reviewers} key={review.id}/>)
     }
     return (
         <div>
