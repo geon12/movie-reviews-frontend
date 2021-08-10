@@ -11,7 +11,7 @@ function TopMoviesContainer({movies}) {
     }
 
     function topMovies() {
-        return movies.sort((a,b) => a.average_rating-b.average_rating).slice(0,10)
+        return movies.sort((a,b) => b.average_rating-a.average_rating).slice(0,10)
         
     }
     return (
