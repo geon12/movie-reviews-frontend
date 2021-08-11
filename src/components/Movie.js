@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import MovieReviewCard from "./MovieReviewCard";
 
-function Movie({movies,reviewers}) {
+function Movie({movies,reviewers,fetchData}) {
     let { id } = useParams();
     const [movie,setMovie] = useState(null)
     useEffect( () => {
@@ -11,9 +11,31 @@ function Movie({movies,reviewers}) {
             .then(setMovie)
     },[id])
 
-    function populateMovieReviews () {
-        return movie.movie_reviews.map((review) => <MovieReviewCard movieReview={review} movies={movies} reviewers={reviewers} key={review.id}/>)
+    function handleDeleteMovieReview(id) {
+        fetch(`${process.env.REACT_APP_API_URL}/movie_reviews/${id}`,{method: 'DELETE'})
+            .then(resp => resp.json())
+            .then(() => {
+                
+                const updatedMoviewReviews = movie.movie_reviews.filter((review) => review.id !== id)
+                const updatedMovie = {...movie}
+                updatedMovie.movie_reviews = updatedMoviewReviews
+                setMovie(updatedMovie)
+                fetchData()
+            })
+            .catch(console.error)
     }
+
+    function populateMovieReviews () {
+        return movie.movie_reviews.map((review) => 
+            <MovieReviewCard 
+                movieReview={review} 
+                movies={movies} 
+                reviewers={reviewers}
+                handleDelete={handleDeleteMovieReview}
+                key={review.id}
+            />)
+    }
+
     return (
         <div>
            { movie ? <>

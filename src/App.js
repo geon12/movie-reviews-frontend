@@ -15,7 +15,7 @@ function App() {
   const [reviewers,setReviewers] = useState(null)
   const [movies,setMovies] = useState(null)
 
-  useEffect(() => {
+  const fetchReviewersAndMovies = () => {
     fetch(`${process.env.REACT_APP_API_URL}/movies`)
       .then(resp => resp.json())
       .then(setMovies)
@@ -23,7 +23,9 @@ function App() {
       .then(resp => resp.json())
       .then(setReviewers)
 
-  },[])
+  }
+
+  useEffect(fetchReviewersAndMovies,[])
 
   return (
     <div>
@@ -33,10 +35,10 @@ function App() {
             {movies && reviewers ? <Home movies={movies} reviewers={reviewers}/> : <div>Page is Loading</div>}
           </Route>
           <Route path='/movies/:id'>
-            {movies && reviewers ? <Movie movies={movies} reviewers={reviewers}/> : <div>Page is Loading</div>}
+            {movies && reviewers ? <Movie movies={movies} reviewers={reviewers} fetchData={fetchReviewersAndMovies}/> : <div>Page is Loading</div>}
           </Route>
           <Route path='/reviewers/:id'>
-            {movies && reviewers ? <Reviewer movies={movies} reviewers={reviewers}/> : <div>Page is Loading</div>}
+              {movies && reviewers ? <Reviewer movies={movies} reviewers={reviewers} fetchData={fetchReviewersAndMovies}/> : <div>Page is Loading</div>}
           </Route>
           <Route path="*">
               404 Page Not Found
