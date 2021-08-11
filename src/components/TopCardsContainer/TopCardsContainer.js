@@ -1,7 +1,8 @@
 import {useState} from "react"
-import MoveButton from "./MoveButton"
-import MovieCard from "./MovieCard"
-import ReviewerCard from "./ReviewerCard"
+import MoveButton from "../MoveButton"
+import MovieCard from "../MovieCard"
+import ReviewerCard from "../ReviewerCard"
+import './TopCardsContainer.css'
 
 
 function TopCardsContainer({data,isMovie,sortData}) {
@@ -26,7 +27,7 @@ function TopCardsContainer({data,isMovie,sortData}) {
         
     }
     return (
-        <div className="d-flex flex-row">
+        <div className="d-flex flex-row styless">
             <MoveButton handleMove={handleBackData} goBack={true}/>
              {topData().slice(dataStart,dataStart + carouselLength).map(record => 
                 isMovie ? <MovieCard key={record.id} movie={record}/> :

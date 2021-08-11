@@ -1,5 +1,5 @@
 
-import TopCardsContainer from "./TopCardsContainer";
+import TopCardsContainer from "./TopCardsContainer/TopCardsContainer";
 
 function Home({movies,reviewers}) {
 
