@@ -15,25 +15,39 @@ function Reviewer({movies,reviewers,fetchData}) {
         fetch(`${process.env.REACT_APP_API_URL}/movie_reviews/${id}`,{method: 'DELETE'})
             .then(resp => resp.json())
             .then(() => {
-                // let deletedLikes = 0
-                // const updatedMoviewReviews = reviewer.movie_reviews.filter((review) =>{ 
-                //     if (review.id === id) deletedLikes = review.likes
-                //     return review.id !== id
-                // })
 
                 const updatedMoviewReviews = reviewer.movie_reviews.filter((review) => review.id !== id)
                 const updatedReviewer = {...reviewer}
                 updatedReviewer.movie_reviews = updatedMoviewReviews
                 setReviewer(updatedReviewer)
                 fetchData()
-                // const updatedReviewers = reviewers.map((r) => {
-                //     if (r.id === reviewer.id) {
-                //         r.total_likes -= deletedLikes
-                //         return r
-                //     }
-                //     return r
-                // })
-                // setReviewers(updatedReviewers)
+            })
+            .catch(console.error)
+    }
+
+    function handleMovieReviewLike(id,numLikes) {
+        numLikes += 1
+        const data = {likes: numLikes}
+        const configObj = {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }
+
+        fetch(`${process.env.REACT_APP_API_URL}/movie_reviews/${id}`, configObj)
+            .then(resp => resp.json())
+            .then((resp) => {
+
+                const updatedMoviewReviews = reviewer.movie_reviews.map((review) => {
+                    if (review.id === id) return resp
+                    return review
+                })
+                const updatedReviewer = {...reviewer}
+                updatedReviewer.movie_reviews = updatedMoviewReviews
+                setReviewer(updatedReviewer)
+                fetchData()
             })
             .catch(console.error)
     }
@@ -44,6 +58,7 @@ function Reviewer({movies,reviewers,fetchData}) {
                 movies={movies} 
                 reviewers={reviewers}
                 handleDelete={handleDeleteMovieReview}
+                handleLike={handleMovieReviewLike}
                 key={review.id} 
             />)
     }

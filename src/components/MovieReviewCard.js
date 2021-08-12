@@ -1,8 +1,13 @@
 import {BsFillHeartFill} from "react-icons/bs";
 
-function MovieReviewCard({movieReview,movies,reviewers,handleDelete}) {
+function MovieReviewCard({movieReview,movies,reviewers,handleDelete,handleLike}) {
     const movie = movies.find((m)=> m.id === movieReview.movie_id)
     const reviewer = reviewers.find((r) => r.id === movieReview.reviewer_id)
+
+    function onLike() {
+        handleLike(movieReview.id,movieReview.likes)
+
+    }
     return (
 
         <div className="card">
@@ -12,7 +17,7 @@ function MovieReviewCard({movieReview,movies,reviewers,handleDelete}) {
             <h6 className="card-subtitle mb-2 text-muted">{reviewer.outlet}</h6>
             <p className="card-text">{movieReview.review}</p>
             <div>
-                <button className="btn"><BsFillHeartFill /></button>
+                <button className="btn" onClick={onLike}><BsFillHeartFill /></button>
                 <span>{movieReview.likes}</span>
             </div>
             <button className="btn" onClick={()=>{handleDelete(movieReview.id)}}>Delete</button>
