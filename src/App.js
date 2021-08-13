@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Movie from './components/Movie';
 import Reviewer from './components/Reviewer'
+import MovieReviewCard from './components/MovieReviewCard'
 
 
 function App() {
@@ -27,6 +28,61 @@ function App() {
 
   useEffect(fetchReviewersAndMovies,[])
 
+
+  function handleDeleteMovieReview(id,data,setData) {
+    fetch(`${process.env.REACT_APP_API_URL}/movie_reviews/${id}`,{method: 'DELETE'})
+        .then(resp => resp.json())
+        .then(() => {
+
+            const updatedMoviewReviews = data.movie_reviews.filter((review) => review.id !== id)
+            const updatedData = {...data}
+            updatedData.movie_reviews = updatedMoviewReviews
+            setData(updatedData)
+            fetchReviewersAndMovies()
+        })
+        .catch(console.error)
+  }
+
+  function handleMovieReviewLike(id,numLikes,data,setData) {
+      numLikes += 1
+      const likeData = {likes: numLikes}
+      const configObj = {
+          method: 'PATCH',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(likeData)
+      }
+
+      fetch(`${process.env.REACT_APP_API_URL}/movie_reviews/${id}`, configObj)
+          .then(resp => resp.json())
+          .then((resp) => {
+
+              const updatedMoviewReviews = data.movie_reviews.map((review) => {
+                  if (review.id === id) return resp
+                  return review
+              })
+              const updatedData = {...data}
+              updatedData.movie_reviews = updatedMoviewReviews
+              setData(updatedData)
+              fetchReviewersAndMovies()
+          })
+          .catch(console.error)
+  }
+  function populateMovieReviews (data,setData) {
+      return data.movie_reviews.map((review) => 
+          <MovieReviewCard 
+              movieReview={review} 
+              movies={movies} 
+              reviewers={reviewers}
+              handleDelete={handleDeleteMovieReview}
+              handleLike={handleMovieReviewLike}
+              data={data}
+              setData={setData}
+              key={review.id} 
+          />)
+  }
+
   return (
     <div>
       <Router>
@@ -35,10 +91,14 @@ function App() {
             {movies && reviewers ? <Home movies={movies} reviewers={reviewers}/> : <div>Page is Loading</div>}
           </Route>
           <Route path='/movies/:id'>
-            {movies && reviewers ? <Movie movies={movies} reviewers={reviewers} fetchData={fetchReviewersAndMovies}/> : <div>Page is Loading</div>}
+            {movies && reviewers ? 
+              <Movie populateMovieReviews={populateMovieReviews}/> 
+              : <div>Page is Loading</div>}
           </Route>
           <Route path='/reviewers/:id'>
-              {movies && reviewers ? <Reviewer movies={movies} reviewers={reviewers} fetchData={fetchReviewersAndMovies}/> : <div>Page is Loading</div>}
+              {movies && reviewers ? 
+                <Reviewer populateMovieReviews={populateMovieReviews}/> 
+                : <div>Page is Loading</div>}
           </Route>
           <Route path="*">
               404 Page Not Found
