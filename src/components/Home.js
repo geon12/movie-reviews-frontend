@@ -1,4 +1,5 @@
 
+import SearchBar from "./SearchBar";
 import TopCardsContainer from "./TopCardsContainer/TopCardsContainer";
 
 function Home({movies,reviewers}) {
@@ -13,6 +14,7 @@ function Home({movies,reviewers}) {
             <TopCardsContainer data={movies} isMovie={true} sortData={sortMovies}/>
             <h2>Top Reviewers</h2>
             <TopCardsContainer data={reviewers} isMovie={false} sortData={sortReviewers}/>
+            <SearchBar />
         </div>
         
     )
