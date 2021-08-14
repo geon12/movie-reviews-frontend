@@ -11,6 +11,8 @@ function AddMovieReview({movies, reviewers,fetchData}) {
     const [reviewerId,setReviewerId] = useState(null)
 
     //const [searchToggle,setSearchToggle] = useState(null)
+    const [checkedMovie,setCheckedMovie] = useState(null)
+    const [checkedReviewer,setCheckedReviewer] = useState(null)
     const [newReview, setNewReview] = useState(null)
 
     const movieName = "MovieRadioOptions"
@@ -32,6 +34,8 @@ function AddMovieReview({movies, reviewers,fetchData}) {
         <RadioOption 
             resource={movie}
             handleRadioChange={handleRadioChange}
+            checked={checkedMovie}
+            setChecked={setCheckedMovie}
             name={movieName}
             key={movie.id}
         >
@@ -51,6 +55,8 @@ function AddMovieReview({movies, reviewers,fetchData}) {
         <RadioOption 
             resource={reviewer}
             handleRadioChange={handleRadioChange}
+            checked={checkedReviewer}
+            setChecked={setCheckedReviewer}
             name={reviewerName}
             key={reviewer.id}
         >
@@ -78,6 +84,8 @@ function AddMovieReview({movies, reviewers,fetchData}) {
                     setReviewerId={setReviewerId}
                     setNewReview={setNewReview}
                     fetchData={fetchData}
+                    setCheckedMovie={setCheckedMovie}
+                    setCheckedReviewer={setCheckedReviewer}
                 /> 
                 : null
             }

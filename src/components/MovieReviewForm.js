@@ -1,6 +1,6 @@
 import {useState} from "react"
 
-function MovieReviewForm({reviewerId,movieId, setReviewerId,setMovieId,setNewReview,fetchData}) {
+function MovieReviewForm({reviewerId,movieId, setReviewerId,setMovieId,setNewReview,fetchData,setCheckedMovie,setCheckedReviewer}) {
     const initialState =  {
         review: "",
         rating: 1,
@@ -39,6 +39,9 @@ function MovieReviewForm({reviewerId,movieId, setReviewerId,setMovieId,setNewRev
                 setFormData(initialState)
                 setReviewerId(null)
                 setMovieId(null)
+                setCheckedMovie(null)
+                setCheckedReviewer(null)
+                
                 fetchData()
             })
             .catch(console.error)
