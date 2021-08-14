@@ -18,7 +18,7 @@ function Home({movies,reviewers}) {
             <TopCardsContainer data={movies} isMovie={true} sortData={sortMovies}/>
             <h2>Top Reviewers</h2>
             <TopCardsContainer data={reviewers} isMovie={false} sortData={sortReviewers}/>
-            <ResourceContainer resource={movies} populateResource={populateMovies} searchResource={"movies"}/>
+            <ResourceContainer resource={movies} populateResource={populateMovies} searchResource={"Movies"}/>
             <AddMovieReview movies={movies} reviewers={reviewers}/>
         </div>
         

@@ -18,7 +18,7 @@ function SearchBar({handleSearchSubmit,searchResource}) {
     return (
         <form onSubmit={handleSubmit}>
             <label htmlFor={id}>
-                <span>Search Movies</span>
+                <span>Search {searchResource}</span>
             </label>
             <input
                 type="text"
