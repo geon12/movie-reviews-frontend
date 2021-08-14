@@ -1,7 +1,7 @@
 import ResourceContainer from "./ResourceContainer";
 import TopCardsContainer from "./TopCardsContainer/TopCardsContainer";
 import MovieCard from "./MovieCard";
-import AddMovieReview from "./AddMovieReview";
+
 
 function Home({movies,reviewers}) {
 
@@ -19,7 +19,6 @@ function Home({movies,reviewers}) {
             <h2>Top Reviewers</h2>
             <TopCardsContainer data={reviewers} isMovie={false} sortData={sortReviewers}/>
             <ResourceContainer resource={movies} populateResource={populateMovies} searchResource={"Movies"}/>
-            <AddMovieReview movies={movies} reviewers={reviewers}/>
         </div>
         
     )

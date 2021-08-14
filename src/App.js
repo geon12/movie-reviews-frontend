@@ -9,7 +9,7 @@ import {
 import Movie from './components/Movie';
 import Reviewer from './components/Reviewer'
 import MovieReviewCard from './components/MovieReviewCard'
-
+import AddMovieReview from "./components/AddMovieReview";
 
 function App() {
 
@@ -99,6 +99,9 @@ function App() {
               {movies && reviewers ? 
                 <Reviewer populateMovieReviews={populateMovieReviews}/> 
                 : <div>Page is Loading</div>}
+          </Route>
+          <Route path='/add_movie_review'>
+              <AddMovieReview movies={movies} reviewers={reviewers} fetchData={fetchReviewersAndMovies}/>
           </Route>
           <Route path="*">
               404 Page Not Found

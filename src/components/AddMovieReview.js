@@ -4,10 +4,14 @@ import ReviewerCard from "./ReviewerCard"
 import RadioOption from "./RadioOption";
 import { useState } from "react";
 import MovieReviewForm from "./MovieReviewForm";
+import NewMovieReviewCard from "./NewMovieReviewCard"
 
-function AddMovieReview({movies, reviewers}) {
+function AddMovieReview({movies, reviewers,fetchData}) {
     const [movieId,setMovieId] = useState(null)
     const [reviewerId,setReviewerId] = useState(null)
+
+    //const [searchToggle,setSearchToggle] = useState(null)
+    const [newReview, setNewReview] = useState(null)
 
     const movieName = "MovieRadioOptions"
     const reviewerName = "ReviewerRadioOptions"
@@ -62,9 +66,29 @@ function AddMovieReview({movies, reviewers}) {
     return (
         <div>
             <h1>Add Movie Review</h1>
+            <h2>Choose Movie</h2>
             <ResourceContainer resource={movies} populateResource={populateMovies} searchResource={"Movies"}/>
+            <h2>Choose Reviewer</h2>
             <ResourceContainer resource={reviewers} populateResource={populateReviewers} searchResource={"Reviewers"}/>
-            <MovieReviewForm movieId={movieId} reviewId={reviewerId}/>
+            {movieId && reviewerId ? 
+                <MovieReviewForm 
+                    movieId={movieId} 
+                    reviewerId={reviewerId} 
+                    setMovieId={setMovieId} 
+                    setReviewerId={setReviewerId}
+                    setNewReview={setNewReview}
+                    fetchData={fetchData}
+                /> 
+                : null
+            }
+            {newReview ? <NewMovieReviewCard 
+                            movieReview={newReview}
+                            movies={movies}
+                            reviewers={reviewers}
+                            setNewReview={setNewReview}
+                            fetchData={fetchData}
+                        /> 
+                            : null}
         </div>
     )
 }
