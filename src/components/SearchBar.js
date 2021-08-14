@@ -11,6 +11,7 @@ function SearchBar({handleSearchSubmit,searchResource}) {
     function handleSubmit(event) {
         event.preventDefault()
         handleSearchSubmit(search)
+        setSearch("")
     }
 
     const placeholder = `Search ${searchResource}`

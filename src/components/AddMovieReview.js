@@ -3,6 +3,7 @@ import MovieCard from "./MovieCard";
 import ReviewerCard from "./ReviewerCard"
 import RadioOption from "./RadioOption";
 import { useState } from "react";
+import MovieReviewForm from "./MovieReviewForm";
 
 function AddMovieReview({movies, reviewers}) {
     const [movieId,setMovieId] = useState(null)
@@ -63,7 +64,7 @@ function AddMovieReview({movies, reviewers}) {
             <h1>Add Movie Review</h1>
             <ResourceContainer resource={movies} populateResource={populateMovies} searchResource={"Movies"}/>
             <ResourceContainer resource={reviewers} populateResource={populateReviewers} searchResource={"Reviewers"}/>
-            
+            <MovieReviewForm movieId={movieId} reviewId={reviewerId}/>
         </div>
     )
 }
