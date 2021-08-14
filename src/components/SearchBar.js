@@ -1,5 +1,5 @@
 import {useState} from "react"
-function SearchBar({handleSearchSubmit}) {
+function SearchBar({handleSearchSubmit,searchResource}) {
 
     const [search,setSearch] = useState("")
 
@@ -13,15 +13,17 @@ function SearchBar({handleSearchSubmit}) {
         handleSearchSubmit(search)
     }
 
+    const placeholder = `Search ${searchResource}`
+    const id = `${searchResource}-search`
     return (
         <form onSubmit={handleSubmit}>
-            <label htmlFor="movie-search">
+            <label htmlFor={id}>
                 <span>Search Movies</span>
             </label>
             <input
                 type="text"
-                id="movie-search"
-                placeholder="Search movies"
+                id={id}
+                placeholder={placeholder}
                 name="title"
                 value={search}
                 onChange={handleChange} 
