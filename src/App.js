@@ -94,25 +94,25 @@ function App() {
           <Route exact path='/'>
             {movies && reviewers ? <Home movies={movies} reviewers={reviewers}/> : <div>Page is Loading</div>}
           </Route>
-          <Route path='/movies/:id'>
+          <Route exact path='/movies/:id'>
             {movies && reviewers ? 
               <Movie populateMovieReviews={populateMovieReviews}/> 
               : <div>Page is Loading</div>}
           </Route>
-          <Route path='/reviewers/:id'>
+          <Route exact path='/reviewers/:id'>
               {movies && reviewers ? 
                 <Reviewer populateMovieReviews={populateMovieReviews}/> 
                 : <div>Page is Loading</div>}
           </Route>
-          <Route path='/add_movie_review'>
+          <Route exact path='/add_movie_review'>
             {movies && reviewers ? 
               <AddMovieReview movies={movies} reviewers={reviewers} fetchData={fetchReviewersAndMovies}/>
               : <div>Page is Loading</div>}
           </Route>
-          <Route path='/browse_movies'>
+          <Route exact path='/browse_movies'>
             {movies ? <BrowseMovies movies={movies}/> : <div>Page is Loading</div>}
           </Route>
-          <Route path='/browse_reviewers'>
+          <Route exact path='/browse_reviewers'>
             {reviewers ? <BrowseReviewers reviewers={reviewers}/> : <div>Page is Loading</div>}
           </Route>
           <Route path="*">
