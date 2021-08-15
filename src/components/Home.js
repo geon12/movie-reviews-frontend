@@ -12,7 +12,7 @@ function Home({movies,reviewers}) {
         return filteredMovies.map((movie) => <MovieCard movie={movie} key={movie.id}/>)
     }
     return (
-        <div>
+        <div className="text-center">
             <h1>Movie Reviews</h1>
             <h2>Top Movies</h2>
             <TopCardsContainer data={movies} isMovie={true} sortData={sortMovies}/>

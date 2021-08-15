@@ -10,7 +10,6 @@ function AddMovieReview({movies, reviewers,fetchData}) {
     const [movieId,setMovieId] = useState(null)
     const [reviewerId,setReviewerId] = useState(null)
 
-    //const [searchToggle,setSearchToggle] = useState(null)
     const [checkedMovie,setCheckedMovie] = useState(null)
     const [checkedReviewer,setCheckedReviewer] = useState(null)
     const [newReview, setNewReview] = useState(null)
