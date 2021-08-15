@@ -1,6 +1,7 @@
 import ResourceContainer from "./ResourceContainer";
 import TopCardsContainer from "./TopCardsContainer";
 import MovieCard from "./MovieCard";
+import './styles/Card.css'
 
 
 function Home({movies,reviewers}) {
@@ -9,7 +10,7 @@ function Home({movies,reviewers}) {
     const sortMovies = (a,b) => b.average_rating - a.average_rating
 
     function populateMovies(filteredMovies) {
-        return filteredMovies.map((movie) => <MovieCard movie={movie} key={movie.id}/>)
+        return filteredMovies.map((movie) => <MovieCard movie={movie} styleName={"record-card"} key={movie.id}/>)
     }
     return (
         <div className="text-center">
