@@ -2,7 +2,7 @@ function RadioOption({children,resource,handleRadioChange,name,setChecked,checke
     return (
         <div className="form-check">
             <input 
-                className="form-check-input" 
+                className="m-2" 
                 type="radio" 
                 name={name} 
                 id={resource.id}

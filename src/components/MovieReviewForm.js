@@ -59,7 +59,8 @@ function MovieReviewForm({reviewerId,movieId, setReviewerId,setMovieId,setNewRev
     return (
  
         <form onSubmit={handleSubmit}>
-            <div className="form-group my-2 mx-4">
+            <h4>Add Review</h4>
+            <div className="form-group my-2 mx-5">
                 <input 
                     type="text" 
                     className="form-control" 
@@ -70,6 +71,7 @@ function MovieReviewForm({reviewerId,movieId, setReviewerId,setMovieId,setNewRev
                     required
                 />
             </div>
+            <h4>Add Rating</h4>
             <div className="form-group my-2 mx-4">
                 <input 
                     type="number" 
@@ -80,7 +82,8 @@ function MovieReviewForm({reviewerId,movieId, setReviewerId,setMovieId,setNewRev
                     onChange={handleChange}
                 />
             </div>
-            <button type="submit" className="btn my-1 mx-5">Add Movie Review</button>
+            
+            <button type="submit" className="btn btn-secondary add-button my-1 mx-5">Add Movie Review</button>
         </form>
 
     )

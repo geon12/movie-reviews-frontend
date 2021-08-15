@@ -1,4 +1,5 @@
 import {BsFillHeartFill} from "react-icons/bs";
+import "./styles/Card.css"
 
 function NewMovieReviewCard({movieReview,movies,reviewers,setNewReview,fetchData}) {
     const movie = movies.find((m)=> m.id === movieReview.movie_id)
@@ -37,17 +38,17 @@ function NewMovieReviewCard({movieReview,movies,reviewers,setNewReview,fetchData
     
     return (
 
-        <div className="card">
+        <div className="card row m-2 mx-5 text-center p-2 border border-dark">
             <h5 className="card-title">{movie.name}</h5>
             <h6 className="card-subtitle mb-2 text-muted">Rating: {movieReview.rating}</h6>
             <h6 className="card-subtitle mb-2 text-muted">by {reviewer.name}</h6>
             <h6 className="card-subtitle mb-2 text-muted">{reviewer.outlet}</h6>
             <p className="card-text">{movieReview.review}</p>
             <div>
-                <button className="btn" onClick={onLike}><BsFillHeartFill /></button>
+                <button className="like" onClick={onLike}><BsFillHeartFill /></button>
                 <span>{movieReview.likes}</span>
             </div>
-            <button className="btn" onClick={onDelete}>Delete</button>
+            <button className="btn btn-secondary delete" onClick={onDelete}>Delete</button>
         </div>
     )
 }

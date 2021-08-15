@@ -5,6 +5,7 @@ import RadioOption from "./RadioOption";
 import { useState } from "react";
 import MovieReviewForm from "./MovieReviewForm";
 import NewMovieReviewCard from "./NewMovieReviewCard"
+import './styles/AddMovieReview.css'
 
 function AddMovieReview({movies, reviewers,fetchData}) {
     const [movieId,setMovieId] = useState(null)
@@ -38,7 +39,7 @@ function AddMovieReview({movies, reviewers,fetchData}) {
             name={movieName}
             key={movie.id}
         >
-            <MovieCard movie={movie} />
+            <MovieCard movie={movie} styleName={"search-card"}/>
         </RadioOption>)
 
         return (
@@ -59,7 +60,7 @@ function AddMovieReview({movies, reviewers,fetchData}) {
             name={reviewerName}
             key={reviewer.id}
         >
-            <ReviewerCard reviewer={reviewer} />
+            <ReviewerCard reviewer={reviewer} styleName={"search-card"}/>
         </RadioOption>)
         
         return (
@@ -69,12 +70,18 @@ function AddMovieReview({movies, reviewers,fetchData}) {
         )
     }
     return (
-        <div>
-            <h1>Add Movie Review</h1>
-            <h2>Choose Movie</h2>
-            <ResourceContainer resource={movies} populateResource={populateMovies} searchResource={"Movies"}/>
-            <h2>Choose Reviewer</h2>
-            <ResourceContainer resource={reviewers} populateResource={populateReviewers} searchResource={"Reviewers"}/>
+        <div className="text-center">
+            
+            <div className="d-flex justify-content-center row">
+                <div className="col-4">
+                <h2>Choose a Movie</h2>
+                <ResourceContainer resource={movies} populateResource={populateMovies} searchResource={"Movies"}/>
+                </div>
+                <div className="col-4">
+                <h2>Choose a Reviewer</h2>
+                <ResourceContainer resource={reviewers} populateResource={populateReviewers} searchResource={"Reviewers"}/>
+                </div>
+            </div>
             {movieId && reviewerId ? 
                 <MovieReviewForm 
                     movieId={movieId} 

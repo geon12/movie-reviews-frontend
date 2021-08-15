@@ -42,8 +42,9 @@ a:link {
     padding: 5%;
     display:flex;
     flex-wrap:wrap;
-    height:150px;
-    width:150px;
+    height:200px;
+    width:200px;
+    padding-top: 20%;
 }
 
 .carousel {

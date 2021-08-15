@@ -116,7 +116,7 @@ function App() {
             {reviewers ? <BrowseReviewers reviewers={reviewers}/> : <div>Page is Loading</div>}
           </Route>
           <Route path="*">
-              404 Page Not Found
+              <div className="display-4 text-center m-4">404 Page Not Found</div>
           </Route>
         </Switch>
       </Router>

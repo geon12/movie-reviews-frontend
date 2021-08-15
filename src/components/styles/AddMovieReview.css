@@ -1,0 +1,7 @@
+.search-card {
+    padding: 5%;
+    display:flex;
+    flex-wrap:wrap;
+    height:auto;
+    width: 250px;
+}
