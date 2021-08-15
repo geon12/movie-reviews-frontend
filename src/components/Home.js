@@ -1,5 +1,5 @@
 import ResourceContainer from "./ResourceContainer";
-import TopCardsContainer from "./TopCardsContainer/TopCardsContainer";
+import TopCardsContainer from "./TopCardsContainer";
 import MovieCard from "./MovieCard";
 
 

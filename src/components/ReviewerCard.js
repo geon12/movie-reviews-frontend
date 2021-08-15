@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom"
 
-function ReviewerCard({reviewer,movies,reviewers}) {
+function ReviewerCard({reviewer}) {
 
     
     return (

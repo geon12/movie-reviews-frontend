@@ -11,6 +11,8 @@ import Reviewer from './components/Reviewer'
 import MovieReviewCard from './components/MovieReviewCard'
 import AddMovieReview from "./components/AddMovieReview";
 import BrowseMovies from "./components/BrowseMovies"
+import BrowseReviewers from "./components/BrowseReviewers"
+import NavBar from "./components/NavBar"
 
 function App() {
 
@@ -87,6 +89,7 @@ function App() {
   return (
     <div>
       <Router>
+        <NavBar />
         <Switch>
           <Route exact path='/'>
             {movies && reviewers ? <Home movies={movies} reviewers={reviewers}/> : <div>Page is Loading</div>}
@@ -108,6 +111,9 @@ function App() {
           </Route>
           <Route path='/browse_movies'>
             {movies ? <BrowseMovies movies={movies}/> : <div>Page is Loading</div>}
+          </Route>
+          <Route path='/browse_reviewers'>
+            {reviewers ? <BrowseReviewers reviewers={reviewers}/> : <div>Page is Loading</div>}
           </Route>
           <Route path="*">
               404 Page Not Found

@@ -1,8 +1,8 @@
 import {useState} from "react"
-import MoveButton from "../MoveButton"
-import MovieCard from "../MovieCard"
-import ReviewerCard from "../ReviewerCard"
-import './TopCardsContainer.css'
+import MoveButton from "./MoveButton"
+import MovieCard from "./MovieCard"
+import ReviewerCard from "./ReviewerCard"
+import './styles/TopCardsContainer.css'
 
 
 function TopCardsContainer({data,isMovie,sortData}) {
