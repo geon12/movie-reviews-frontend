@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import PageIsLoading from "./PageIsLoading";
 
 
 function Reviewer({populateMovieReviews}) {
     let { id } = useParams();
     const [reviewer,setReviewer] = useState(null)
+    
     useEffect( () => {
         fetch(`${process.env.REACT_APP_API_URL}/reviewers/${id}`)
             .then(resp => resp.json())
@@ -21,7 +23,7 @@ function Reviewer({populateMovieReviews}) {
                     {populateMovieReviews(reviewer,setReviewer)}
                 </div> :
 
-                <div>Page is Loading</div>
+                <PageIsLoading />
 
             }
         </div>

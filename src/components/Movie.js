@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import PageIsLoading from "./PageIsLoading";
 import "./styles/Movie.css"
 
 function Movie({populateMovieReviews}) {
@@ -25,7 +26,7 @@ function Movie({populateMovieReviews}) {
                             {populateMovieReviews(movie,setMovie)}
                         </div>
                     </>
-                    : <div>Page is Loading</div>
+                    : <PageIsLoading />
            }
         </div>
     )
