@@ -13,6 +13,7 @@ import AddMovieReview from "./components/AddMovieReview";
 import BrowseMovies from "./components/BrowseMovies"
 import BrowseReviewers from "./components/BrowseReviewers"
 import NavBar from "./components/NavBar"
+import PageIsLoading from "./components/PageIsLoading"
 
 function App() {
 
@@ -92,28 +93,28 @@ function App() {
         <NavBar />
         <Switch>
           <Route exact path='/'>
-            {movies && reviewers ? <Home movies={movies} reviewers={reviewers}/> : <div>Page is Loading</div>}
+            {movies && reviewers ? <Home movies={movies} reviewers={reviewers}/> : <PageIsLoading />}
           </Route>
           <Route exact path='/movies/:id'>
             {movies && reviewers ? 
               <Movie populateMovieReviews={populateMovieReviews}/> 
-              : <div>Page is Loading</div>}
+              : <PageIsLoading />}
           </Route>
           <Route exact path='/reviewers/:id'>
               {movies && reviewers ? 
                 <Reviewer populateMovieReviews={populateMovieReviews}/> 
-                : <div>Page is Loading</div>}
+                : <PageIsLoading />}
           </Route>
           <Route exact path='/add_movie_review'>
             {movies && reviewers ? 
               <AddMovieReview movies={movies} reviewers={reviewers} fetchData={fetchReviewersAndMovies}/>
-              : <div>Page is Loading</div>}
+              : <PageIsLoading />}
           </Route>
           <Route exact path='/browse_movies'>
-            {movies ? <BrowseMovies movies={movies}/> : <div>Page is Loading</div>}
+            {movies ? <BrowseMovies movies={movies}/> : <PageIsLoading />}
           </Route>
           <Route exact path='/browse_reviewers'>
-            {reviewers ? <BrowseReviewers reviewers={reviewers}/> : <div>Page is Loading</div>}
+            {reviewers ? <BrowseReviewers reviewers={reviewers}/> : <PageIsLoading />}
           </Route>
           <Route path="*">
               <div className="display-4 text-center m-4">404 Page Not Found</div>
