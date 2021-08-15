@@ -4,8 +4,8 @@ import './styles/NavBar.css'
 function NavBar() {
     const activeStyle={
         fontWeight: "bold",
-        color: "red",
-        backgroundColor: "black"
+        color: "white",
+        backgroundColor: "darkviolet"
       }
     
     return (

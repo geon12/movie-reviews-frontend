@@ -12,11 +12,11 @@
 
 
 .navbar li a:hover {
-    background-color: grey
+    background-color: plum
 }
 
 .navbar ul {
-    background-color: darkblue;
+    background-color: mediumorchid;
     list-style-type: none;
     margin: 0;
     padding: 0;
