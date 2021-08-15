@@ -1,6 +1,5 @@
 import {NavLink} from 'react-router-dom'
 import './styles/NavBar.css'
-import { AiOutlineHome } from "react-icons/ai"
 
 function NavBar() {
     const activeStyle={
@@ -13,7 +12,7 @@ function NavBar() {
         <nav className="row navbar mx-1">
             <ul>
                 <li>
-                    <NavLink exact to='/' activeStyle={activeStyle}><AiOutlineHome size={30} /></NavLink>
+                    <NavLink exact to='/' activeStyle={activeStyle}>Home</NavLink>
                 </li>
                 <li>
                     <NavLink exact to='/browse_movies' activeStyle={activeStyle}>Browse Movies</NavLink>
