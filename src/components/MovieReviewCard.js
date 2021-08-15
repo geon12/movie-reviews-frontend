@@ -14,7 +14,7 @@ function MovieReviewCard({movieReview,movies,reviewers,handleDelete,handleLike,d
     
     return (
 
-        <div className="card row m-2 text-center p-2 border border-dark">
+        <div className="card row m-2 mx-5 text-center p-2 border border-dark">
             <h5 className="card-title">{movie.name}</h5>
             <h6 className="card-subtitle mb-2 text-muted">Rating: {movieReview.rating}</h6>
             <h6 className="card-subtitle mb-2 text-muted">by {reviewer.name}</h6>

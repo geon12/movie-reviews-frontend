@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import "./styles/Movie.css"
 
 function Movie({populateMovieReviews}) {
     let { id } = useParams();
@@ -11,15 +12,15 @@ function Movie({populateMovieReviews}) {
     },[id])
 
     return (
-        <div>
+        <div className="text-center">
            { movie ? <>
-                        <h1>title: {movie.name}</h1>
-                        <h2>description:</h2>
-                        <p>{movie.description}</p>
-                        <h3>released: {movie.year}</h3>
-                        <h3>director: {movie.director}</h3>
-                        <h3>duration(mins): {movie.duration}</h3>
-                        <h2>Reviews</h2>
+                        <h1>{movie.name}</h1>
+                        
+                        <p className="description">{movie.description}</p>
+                        <h4>released: {movie.year}</h4>
+                        <h4>director: {movie.director}</h4>
+                        <h4>duration(mins): {movie.duration}</h4>
+                        <h2 className="m-3">Reviews</h2>
                         <div>
                             {populateMovieReviews(movie,setMovie)}
                         </div>

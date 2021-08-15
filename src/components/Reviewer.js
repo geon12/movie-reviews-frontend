@@ -13,7 +13,7 @@ function Reviewer({populateMovieReviews}) {
 
     
     return (
-        <div>
+        <div className="text-center">
             {reviewer ?
                 <div>
                     <h1>{reviewer.name}</h1>
