@@ -37,3 +37,11 @@ a:link {
 .top-card {
     padding: 1%;
 }
+
+.resource-card {
+    padding: 5%;
+    display:flex;
+    flex-wrap:wrap;
+    height:150px;
+    width:150px;
+}

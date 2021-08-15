@@ -1,4 +1,5 @@
 import {useState} from "react"
+import './styles/SearchBar.css'
 function SearchBar({handleSearchSubmit,searchResource}) {
 
     const [search,setSearch] = useState("")
@@ -17,9 +18,9 @@ function SearchBar({handleSearchSubmit,searchResource}) {
     const placeholder = `Search ${searchResource}`
     const id = `${searchResource}-search`
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="m-2 search p-2">
             <label htmlFor={id}>
-                <span>Search {searchResource}</span>
+                <span className="m-2 p-2">Search {searchResource}</span>
             </label>
             <input
                 type="text"

@@ -30,8 +30,8 @@ function TopCardsContainer({data,isMovie,sortData}) {
         <div className="d-flex flex-row styless justify-content-center m-4">
             <MoveButton handleMove={handleBackData} goBack={true}/>
              {topData().slice(dataStart,dataStart + carouselLength).map(record => 
-                isMovie ? <div key={record.id} className="top-card"><MovieCard movie={record}/></div> :
-                <div key={record.id} className="top-card"><ReviewerCard reviewer={record}/></div>)}
+                isMovie ? <div key={record.id} className="top-card"><MovieCard movie={record} style={"resource-card"}/></div> :
+                <div key={record.id} className="top-card"><ReviewerCard reviewer={record} style={"resource-card"}/></div>)}
              <MoveButton handleMove={handleForwardData} goBack={false}/>
         </div>
     )
