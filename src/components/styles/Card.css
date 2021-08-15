@@ -7,3 +7,14 @@
     padding: 1%;
     text-align: center;
 }
+
+.delete {
+    background-color: plum;
+}
+
+.like {
+    color:mediumorchid;
+    background-color: white;
+    margin-bottom: 1%;
+    margin-right: 1%;
+}

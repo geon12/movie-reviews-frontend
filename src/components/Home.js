@@ -2,7 +2,7 @@ import ResourceContainer from "./ResourceContainer";
 import TopCardsContainer from "./TopCardsContainer";
 import MovieCard from "./MovieCard";
 import './styles/Card.css'
-
+import './styles/Home.css'
 
 function Home({movies,reviewers}) {
 
@@ -14,7 +14,7 @@ function Home({movies,reviewers}) {
     }
     return (
         <div className="text-center">
-            <h1>Movie Reviews</h1>
+            <h1 className="text-uppercase title">Find the Best Movies and Top Reviewers</h1>
             <h2>Top Movies</h2>
             <TopCardsContainer data={movies} isMovie={true} sortData={sortMovies}/>
             <h2>Top Reviewers</h2>

@@ -22,11 +22,11 @@ function MovieReviewCard({movieReview,movies,reviewers,handleDelete,handleLike,d
             <p className="card-text">{movieReview.review}</p>
             <div>
                 <span>
-                    <button className="btn" onClick={onLike}><BsFillHeartFill size={22}/></button>
+                    <button className="like" onClick={onLike}><BsFillHeartFill size={22}/></button>
                     {movieReview.likes}
                 </span>
             </div>
-            <button className="btn" onClick={onDelete}>Delete</button>
+            <button className="btn btn-secondary delete" onClick={onDelete}>Delete</button>
         </div>
     )
 }
